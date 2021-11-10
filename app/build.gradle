@@ -12,6 +12,9 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        // Using this support library ensures that PNG assets are generated from the vector graphics,
+        // for when using older Android devices.
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
