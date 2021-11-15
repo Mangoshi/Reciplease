@@ -7,7 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.reciplease_ca.data.NoteEntity
 import com.example.reciplease_ca.databinding.ListItemBinding
 
-class NotesListAdapter(private val notesList: List<NoteEntity>) :
+class NotesListAdapter(
+    private val notesList: List<NoteEntity>,
+    private val listener: ListItemListener
+) :
+
     RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
 
     // "inner" so it can access the parent class private properties
@@ -28,8 +32,15 @@ class NotesListAdapter(private val notesList: List<NoteEntity>) :
         val note = notesList[position]
         with(holder.binding) {
             noteText.text = note.text
+            root.setOnClickListener{
+                listener.onItemClick(note.id)
+            }
         }
     }
 
     override fun getItemCount() = notesList.size
+
+    interface ListItemListener {
+        fun onItemClick(noteId: Int)
+    }
 }
