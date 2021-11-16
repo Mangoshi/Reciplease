@@ -24,7 +24,7 @@ interface MealDao {
 
     // Single select using ID parameter
     @Query("SELECT * FROM meals WHERE id = :id")
-    fun getmMalById(id: Int): MealEntity?
+    fun getMealById(id: Int): MealEntity?
 
     @Query("SELECT COUNT(*) FROM meals")
     fun getCount(): Int
