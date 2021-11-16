@@ -10,6 +10,6 @@ class MainViewModel : ViewModel() {
     val notesList = MutableLiveData<List<MealEntity>>()
 
     init {
-        notesList.value = SampleDataProvider.getNotes()
+        notesList.value = SampleDataProvider.getMeals()
     }
 }

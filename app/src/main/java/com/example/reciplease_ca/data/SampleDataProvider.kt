@@ -17,7 +17,7 @@ class SampleDataProvider {
             return Date(Date().time + diff)
         }
 
-        fun getNotes() = arrayListOf(
+        fun getMeals() = arrayListOf(
             MealEntity(1, getDate(0), sampleText1),
             MealEntity(2, getDate(1), sampleText2),
             MealEntity(3, getDate(2), sampleText3)
