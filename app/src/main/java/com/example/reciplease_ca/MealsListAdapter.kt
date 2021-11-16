@@ -32,7 +32,7 @@ class MealsListAdapter(
         val note = notesList[position]
         with(holder.binding) {
             noteText.text = note.text
-            root.setOnClickListener{
+            root.setOnClickListener {
                 listener.onItemClick(note.id)
             }
         }

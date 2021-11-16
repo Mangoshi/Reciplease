@@ -1,6 +1,7 @@
 package com.example.reciplease_ca.data
 
 import androidx.room.TypeConverter
+import java.util.*
 
 // Using this class to convert Date type to Long for storage on SQLite DB,
 // and then back again once received.
