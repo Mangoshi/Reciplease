@@ -7,22 +7,22 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
-interface NoteDao {
+interface MealDao {
 
-    // This function can be used either to insert a new note, or update an existing note,
+    // This function can be used either to insert a new meal, or update an existing meal,
     // if the primary keys of the row and entity match.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNote(note: NoteEntity)
+    fun insertMeal(meal: MealEntity)
 
-    // Inserting a bunch of notes, but if they already exist in the database, throw away the new ones
+    // Inserting a bunch of meals, but if they already exist in the database, throw away the new ones
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertAll(note: List<NoteEntity>)
+    fun insertAll(meal: List<MealEntity>)
 
     // Can use this to observe database table and use reactive programming so I can update the UI automatically as it changes
-    @Query("SELECT * FROM notes ORDER BY date ASC")
-    fun getAll(): LiveData<List<NoteEntity>>
+    @Query("SELECT * FROM meals ORDER BY date ASC")
+    fun getAll(): LiveData<List<MealEntity>>
 
     // Single select using ID parameter
-    @Query("SELECT * FROM notes WHERE id = :id")
-    fun getNoteById(id: Int): NoteEntity?
+    @Query("SELECT * FROM meals WHERE id = :id")
+    fun getmMalById(id: Int): MealEntity?
 }

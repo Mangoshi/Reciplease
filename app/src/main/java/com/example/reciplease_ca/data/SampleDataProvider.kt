@@ -18,9 +18,9 @@ class SampleDataProvider {
         }
 
         fun getNotes() = arrayListOf(
-            NoteEntity(1, getDate(0), sampleText1),
-            NoteEntity(2, getDate(1), sampleText2),
-            NoteEntity(3, getDate(2), sampleText3)
+            MealEntity(1, getDate(0), sampleText1),
+            MealEntity(2, getDate(1), sampleText2),
+            MealEntity(3, getDate(2), sampleText3)
         )
     }
 

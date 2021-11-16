@@ -4,15 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.reciplease_ca.data.NoteEntity
+import com.example.reciplease_ca.data.MealEntity
 import com.example.reciplease_ca.databinding.ListItemBinding
 
-class NotesListAdapter(
-    private val notesList: List<NoteEntity>,
+class MealsListAdapter(
+    private val notesList: List<MealEntity>,
     private val listener: ListItemListener
 ) :
 
-    RecyclerView.Adapter<NotesListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
 
     // "inner" so it can access the parent class private properties
     // This class receives a reference to the root view

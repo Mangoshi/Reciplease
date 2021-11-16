@@ -14,12 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reciplease_ca.databinding.MainFragmentBinding
 
 class MainFragment : Fragment(),
-    NotesListAdapter.ListItemListener {
+    MealsListAdapter.ListItemListener {
 
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
-    private lateinit var adapter: NotesListAdapter
+    private lateinit var adapter: MealsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +41,7 @@ class MainFragment : Fragment(),
 
         viewModel.notesList.observe(viewLifecycleOwner, Observer {
             Log.i("noteLogging:", it.toString())
-            adapter = NotesListAdapter(it, this@MainFragment)
+            adapter = MealsListAdapter(it, this@MainFragment)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         })
