@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.*
 
 @Database(entities = [MealEntity::class], version = 1, exportSchema = false)
-@TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun mealDao(): MealDao?

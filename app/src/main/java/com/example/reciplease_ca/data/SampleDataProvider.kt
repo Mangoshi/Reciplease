@@ -1,26 +1,26 @@
 package com.example.reciplease_ca.data
 
-import java.util.*
-
 class SampleDataProvider {
 
     companion object{
-        private val sampleText1 = "A simple note"
-        private val sampleText2 = "A note a\nline feed"
-        private val sampleText3 = """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non urna a ex sodales hendrerit. Maecenas pulvinar eros nec purus ullamcorper maximus. Nunc sed congue odio, sit amet scelerisque augue. Fusce eros lectus, tincidunt nec mauris vel, sodales fringilla leo. Nullam at accumsan nisl. Donec ligula metus, convallis at rhoncus ut, ullamcorper et risus. Etiam quis mollis ex. Vestibulum suscipit magna quis massa dapibus, venenatis congue dolor interdum.
+        private val sampleName1 = "Omelette"
+        private val sampleName2 = "Pizza"
+        private val sampleName3 = "Spaghetti"
 
-            Vestibulum feugiat molestie suscipit. Phasellus consectetur rutrum dignissim. Cras vehicula mi eu ex pretium, eget pharetra risus mollis. Suspendisse potenti. Suspendisse nec volutpat eros. Nam efficitur sem neque, nec posuere diam tincidunt at. Maecenas hendrerit dolor nec tempus tempor. Cras sit amet pharetra leo. 
-        """.trimIndent()
+        private val sampleCategory1 = "Vegetarian"
+        private val sampleCategory2 = "Vegan"
+        private val sampleCategory3 = "Meat"
 
-        private fun getDate(diff: Long): Date {
-            return Date(Date().time + diff)
-        }
+        private val sampleInstructions1 = "Bacon ipsum dolor amet ground round pork loin capicola buffalo tenderloin fatback flank."
+        private val sampleInstructions2 = "Short loin spare ribs cow doner pork belly strip steak andouille drumstick."
+        private val sampleInstructions3 = "Capicola shankle boudin, landjaeger kevin cupim flank corned beef sausage short loin ground round venison jerky brisket ribeye. Drumstick ground round shoulder tongue, buffalo strip steak hamburger capicola. Leberkas rump buffalo, capicola turkey pork chop doner landjaeger alcatra beef pancetta sausage. Chicken biltong jerky kielbasa, ground round flank swine burgdoggen boudin sausage pastrami bacon shoulder landjaeger t-bone."
+
+
 
         fun getMeals() = arrayListOf(
-            MealEntity(1, getDate(0), sampleText1),
-            MealEntity(2, getDate(1), sampleText2),
-            MealEntity(3, getDate(2), sampleText3)
+            MealEntity(1, sampleName1, sampleCategory1, sampleInstructions1),
+            MealEntity(2, sampleName2, sampleCategory2, sampleInstructions2),
+            MealEntity(3, sampleName3, sampleCategory3, sampleInstructions3)
         )
     }
 

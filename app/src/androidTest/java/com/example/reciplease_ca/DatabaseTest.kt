@@ -40,7 +40,7 @@ class DatabaseTest {
     @Test
     fun insertMeal() {
         val meal = MealEntity()
-        meal.text = "some text"
+        meal.name = "some text"
         dao.insertMeal(meal)
         val savedMeal = dao.getMealById(1)
         assertEquals(savedMeal?.id ?: 0,1)

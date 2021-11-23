@@ -12,9 +12,11 @@ import java.util.*
 data class MealEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int,
-    var date: Date,
-    var text: String
-) {
-    constructor() : this(NEW_MEAL_ID, Date(), "")
-    constructor(date: Date, text: String) : this(NEW_MEAL_ID, date, text)
+    var name: String,
+    var category: String,
+    var instructions: String
+)
+{
+    constructor() : this(NEW_MEAL_ID, "", "", "")
+    constructor(name: String, category: String, instructions: String) : this(NEW_MEAL_ID, name, category, instructions)
 }

@@ -1,9 +1,8 @@
 package com.example.reciplease_ca.models
 
-class Meal (
+data class Meal (
     val id: Int,
     val name: String,
     val category: String,
-    val area: String,
     val instructions: String
 )
