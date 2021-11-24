@@ -12,14 +12,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reciplease_ca.databinding.MainFragmentBinding
+import com.example.reciplease_ca.models.Meal
 
 class MainFragment : Fragment(),
-    MealAdaptor.ListItemListener {
-
+    MealListAdaptor.ListItemListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
-    private lateinit var adapter: MealAdaptor
+    private lateinit var adapter: MealListAdaptor
+    private val listOfFilms = mutableListOf<Meal>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,20 +40,23 @@ class MainFragment : Fragment(),
             addItemDecoration(divider)
         }
 
-        viewModel.mealsList.observe(viewLifecycleOwner, Observer {
-            Log.i("noteLogging:", it.toString())
-            adapter = MealAdaptor(it, this@MainFragment)
-            binding.recyclerView.adapter = adapter
-            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        viewModel.meals.observe(this, Observer { meals ->
+            Log.i(TAG, "Number of meals: ${meals.size}")
+            listOfFilms.addAll(meals)
+            adapter.notifyDataSetChanged()
+        })
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            Log.i(TAG, "isLoading $isLoading")
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
 
 
         return binding.root
     }
 
-    override fun onItemClick(noteId: Int) {
-        Log.i(TAG, "onItemClick: received note id $noteId")
-        val action = MainFragmentDirections.actionEditNote(noteId)
+    override fun onItemClick(mealId: Int) {
+        Log.i(TAG, "onItemClick: received meal id $mealId")
+        val action = MainFragmentDirections.actionEditNote(mealId)
         findNavController().navigate(action)
     }
 }

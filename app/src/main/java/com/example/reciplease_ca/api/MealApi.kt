@@ -1,9 +1,9 @@
 package com.example.reciplease_ca.api
 
-import com.example.reciplease_ca.data.MealEntity
+import com.example.reciplease_ca.models.Meal
 import retrofit2.http.GET
 
 interface MealApi {
-    @GET("meals")
-    suspend fun getMeals(): List<MealEntity>
+    @GET("random")
+    suspend fun getMeals(): List<Meal>
 }

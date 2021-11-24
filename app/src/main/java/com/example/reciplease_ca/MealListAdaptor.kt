@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.reciplease_ca.data.MealEntity
 import com.example.reciplease_ca.databinding.ListItemBinding
+import com.example.reciplease_ca.models.Meal
 
-class MealAdaptor(
+class MealListAdaptor(
     private val context: Context,
-    private val meals: List<MealEntity>,
+    private val meals: List<Meal>,
     private val listener: ListItemListener
-) : RecyclerView.Adapter<MealAdaptor.ViewHolder>() {
+) : RecyclerView.Adapter<MealListAdaptor.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
