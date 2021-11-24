@@ -35,7 +35,8 @@ class EditorFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
-        binding.editor.setText("You selected note number ${args.noteid}")
+        binding.mealName.setText(args.mealName)
+        binding.mealDescription.setText(args.mealDescription)
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,

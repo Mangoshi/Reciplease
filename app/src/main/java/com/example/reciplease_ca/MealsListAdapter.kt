@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.reciplease_ca.data.MealEntity
 import com.example.reciplease_ca.databinding.ListItemBinding
+import com.example.reciplease_ca.models.Meal
 
 class MealsListAdapter(
-    private val notesList: List<MealEntity>,
+    private val mealsList: List<Meal>,
     private val listener: ListItemListener
 ) :
 
@@ -28,19 +28,20 @@ class MealsListAdapter(
         return ViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val note = notesList[position]
+        val meal = mealsList[position]
         with(holder.binding) {
-            noteText.text = note.text
+            mealText.text = meal.strMeal
             root.setOnClickListener {
-                listener.onItemClick(note.id)
+                listener.onItemClick(meal.idMeal, meal.strMeal, meal.strInstructions)
             }
         }
     }
 
-    override fun getItemCount() = notesList.size
+    override fun getItemCount() = mealsList.size
 
     interface ListItemListener {
-        fun onItemClick(noteId: Int)
+        fun onItemClick(mealId: Int, mealName: String, mealInstructions: String)
     }
 }

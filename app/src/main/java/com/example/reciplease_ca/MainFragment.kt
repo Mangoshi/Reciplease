@@ -16,7 +16,6 @@ import com.example.reciplease_ca.databinding.MainFragmentBinding
 class MainFragment : Fragment(),
     MealsListAdapter.ListItemListener {
 
-
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
     private lateinit var adapter: MealsListAdapter
@@ -27,6 +26,7 @@ class MainFragment : Fragment(),
     ): View? {
         binding = MainFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel.getMeals("Arrabiata")
         // Now we have references to all the child view objects within the layout
         // Now we have a code block where we can reference the object multiple times
         with(binding.recyclerView) {
@@ -39,8 +39,8 @@ class MainFragment : Fragment(),
             addItemDecoration(divider)
         }
 
-        viewModel.notesList.observe(viewLifecycleOwner, Observer {
-            Log.i("noteLogging:", it.toString())
+        viewModel.meals.observe(viewLifecycleOwner, Observer {
+            Log.i(TAG, it.toString())
             adapter = MealsListAdapter(it, this@MainFragment)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -50,9 +50,9 @@ class MainFragment : Fragment(),
         return binding.root
     }
 
-    override fun onItemClick(noteId: Int) {
-        Log.i(TAG, "onItemClick: received note id $noteId")
-        val action = MainFragmentDirections.actionEditNote(noteId)
+    override fun onItemClick(mealId: Int, mealName: String, mealInstructions: String) {
+        Log.i(TAG, "onItemClick: received meal id $mealId")
+        val action = MainFragmentDirections.actionEditNote(mealId, mealName, mealInstructions)
         findNavController().navigate(action)
     }
 }

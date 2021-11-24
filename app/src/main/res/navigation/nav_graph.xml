@@ -20,8 +20,22 @@
         android:label="editor_fragment"
         tools:layout="@layout/editor_fragment" >
         <argument
-            android:name="noteid"
+            android:name="mealId"
             app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            />
+        <argument
+            android:name="mealName"
+            app:argType="string"
+            android:defaultValue="0"
+            />
+
+        <argument
+            android:name="mealDescription"
+            app:argType="string"
+            android:defaultValue="0"
+            />
+
+
     </fragment>
 </navigation>
