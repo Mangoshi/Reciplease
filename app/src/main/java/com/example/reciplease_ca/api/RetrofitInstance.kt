@@ -13,7 +13,19 @@ object RetrofitInstance {
             .build()
     }
 
-    val api: MealApi by lazy {
-        retrofit.create(MealApi::class.java)
+    val GET_ALL_CATEGORIES: GETAllCategories by lazy {
+        retrofit.create(GETAllCategories::class.java)
+    }
+
+    val GET_MEALS_BY_CATEGORY: GETMealsByCategory by lazy {
+        retrofit.create(GETMealsByCategory::class.java)
+    }
+
+    val GET_MEAL_BY_NAME: GETMealByName by lazy {
+        retrofit.create(GETMealByName::class.java)
+    }
+
+    val GET_MEAL_BY_ID: GETMealById by lazy {
+        retrofit.create(GETMealById::class.java)
     }
 }

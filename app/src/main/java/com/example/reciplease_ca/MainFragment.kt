@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reciplease_ca.databinding.MainFragmentBinding
 
 class MainFragment : Fragment(),
-    MealsListAdapter.ListItemListener {
+    CategoriesListAdapter.ListItemListener {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var binding: MainFragmentBinding
-    private lateinit var adapter: MealsListAdapter
+    private lateinit var adapter: CategoriesListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +26,11 @@ class MainFragment : Fragment(),
     ): View? {
         binding = MainFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getMeals("Arrabiata")
+
+        viewModel.getAllCategories()
+//        viewModel.getMealById(52940)
+//        viewModel.getMealByName("Arrabiata")
+
         // Now we have references to all the child view objects within the layout
         // Now we have a code block where we can reference the object multiple times
         with(binding.recyclerView) {
@@ -39,20 +43,31 @@ class MainFragment : Fragment(),
             addItemDecoration(divider)
         }
 
-        viewModel.meals.observe(viewLifecycleOwner, Observer {
+//        viewModel.meals.observe(viewLifecycleOwner, Observer {
+//            Log.i(TAG, it.toString())
+//            adapter = MealsListAdapter(it, this@MainFragment)
+//            binding.recyclerView.adapter = adapter
+//            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+//        })
+
+        viewModel.categories.observe(viewLifecycleOwner, Observer {
             Log.i(TAG, it.toString())
-            adapter = MealsListAdapter(it, this@MainFragment)
+            adapter = CategoriesListAdapter(it, this@MainFragment)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         })
 
-
         return binding.root
     }
 
-    override fun onItemClick(mealId: Int, mealName: String, mealInstructions: String) {
-        Log.i(TAG, "onItemClick: received meal id $mealId")
-        val action = MainFragmentDirections.actionEditNote(mealId, mealName, mealInstructions)
+    override fun onItemClick(
+        categoryId: Int,
+        categoryName: String,
+        categoryDescription: String,
+        strCategoryThumb: String
+    ) {
+        Log.i(TAG, "onItemClick: received meal id $categoryId")
+        val action = MainFragmentDirections.actionEditNote(categoryId, categoryName, categoryDescription)
         findNavController().navigate(action)
     }
 }
