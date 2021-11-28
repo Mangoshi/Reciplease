@@ -1,0 +1,66 @@
+package com.example.reciplease_ca
+
+import androidx.lifecycle.ViewModelProvider
+import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.reciplease_ca.databinding.MealsFragmentBinding
+
+class MealsFragment : Fragment(),
+    MealsListAdapter.ListItemListener {
+
+    private lateinit var viewModel: MealsViewModel
+    private lateinit var binding: MealsFragmentBinding
+    private lateinit var adapter: MealsListAdapter
+    private val args: MealsFragmentArgs by navArgs()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
+        (activity as AppCompatActivity).supportActionBar?.let {
+            it.setHomeButtonEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeAsUpIndicator(R.drawable.ic_meal)
+        }
+        setHasOptionsMenu(true)
+
+        binding = MealsFragmentBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(this).get(MealsViewModel::class.java)
+        viewModel.getMealsByCategory(args.categoryName)
+
+        with(binding.recyclerView) {
+            setHasFixedSize(true)
+            val divider = DividerItemDecoration(
+                context, LinearLayoutManager(context).orientation
+            )
+            addItemDecoration(divider)
+        }
+        viewModel.meals.observe(viewLifecycleOwner, Observer {
+            Log.i(TAG, it.toString())
+            adapter = MealsListAdapter(it, this@MealsFragment)
+            binding.recyclerView.adapter = adapter
+            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+        })
+        return binding.root
+    }
+
+    override fun onItemClick(mealId: Int, mealName: String, mealInstructions: String) {
+        Log.i(TAG, "onItemClick: received meal id $mealId")
+        val action = MealsFragmentDirections.actionMealsToEditor(mealId)
+        findNavController().navigate(action)
+    }
+
+}

@@ -30,7 +30,7 @@ class EditorFragment : Fragment() {
             it.setHomeButtonEnabled(true)
             it.setDisplayShowHomeEnabled(true)
             it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeAsUpIndicator(R.drawable.ic_check)
+            it.setHomeAsUpIndicator(R.drawable.ic_note)
         }
         setHasOptionsMenu(true)
 

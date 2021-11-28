@@ -62,12 +62,10 @@ class MainFragment : Fragment(),
 
     override fun onItemClick(
         categoryId: Int,
-        categoryName: String,
-        categoryDescription: String,
-        strCategoryThumb: String
+        categoryName: String
     ) {
-        Log.i(TAG, "onItemClick: received meal id $categoryId")
-        val action = MainFragmentDirections.actionEditNote(categoryId, categoryName, categoryDescription)
+        Log.i(TAG, "onItemClick: received category ID $categoryId")
+        val action = MainFragmentDirections.actionMainToMeals(categoryId, categoryName)
         findNavController().navigate(action)
     }
 }

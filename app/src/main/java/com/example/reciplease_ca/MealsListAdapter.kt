@@ -10,10 +10,7 @@ import com.example.reciplease_ca.models.Meal
 class MealsListAdapter(
     private val mealsList: List<Meal>,
     private val listener: ListItemListener
-) :
-
-    RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
-
+) : RecyclerView.Adapter<MealsListAdapter.ViewHolder>() {
     // "inner" so it can access the parent class private properties
     // This class receives a reference to the root view
     // This gives it access to all the views
@@ -28,7 +25,6 @@ class MealsListAdapter(
         return ViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val meal = mealsList[position]
         with(holder.binding) {
@@ -42,6 +38,10 @@ class MealsListAdapter(
     override fun getItemCount() = mealsList.size
 
     interface ListItemListener {
-        fun onItemClick(mealId: Int, mealName: String, mealInstructions: String)
+        fun onItemClick(
+            mealId: Int,
+            mealName: String,
+            mealInstructions: String
+        )
     }
 }

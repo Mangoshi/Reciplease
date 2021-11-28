@@ -18,12 +18,6 @@ class MainViewModel : ViewModel() {
 
     val categoriesList = MutableLiveData<List<Category>>()
 
-    private val _meals: MutableLiveData<List<Meal>> = MutableLiveData()
-    val meals: LiveData<List<Meal>>
-        get() = _meals
-
-    val mealsList = MutableLiveData<List<Meal>>()
-
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
         get() = _isLoading
@@ -35,40 +29,6 @@ class MainViewModel : ViewModel() {
                 RetrofitInstance.GET_ALL_CATEGORIES.getAllCategories().categories
             Log.i(TAG, "Fetched categories: $fetchedCategories")
             _categories.value = fetchedCategories
-            _isLoading.value = false
-        }
-    }
-
-    fun getMealsByCategory(categoryName: String){
-        // a coroutine function can only be called from a coroutine,
-        // so we make one:
-        viewModelScope.launch {
-            _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEALS_BY_CATEGORY.getMealsByCategory(categoryName).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
-            _isLoading.value = false
-        }
-    }
-
-    fun getMealByName(searchQuery: String){
-        // a coroutine function can only be called from a coroutine,
-        // so we make one:
-        viewModelScope.launch {
-            _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(searchQuery).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
-            _isLoading.value = false
-        }
-    }
-
-    fun getMealById(mealId: Int){
-        viewModelScope.launch {
-            _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_ID.getMealById(mealId).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
             _isLoading.value = false
         }
     }

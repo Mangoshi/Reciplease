@@ -16,15 +16,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_note" />
+        app:srcCompat="@drawable/ic_meal"
+        android:contentDescription="@string/floating_action_button" />
 
     <TextView
         android:id="@+id/mealText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="TextView"
+        android:text="@string/textview"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

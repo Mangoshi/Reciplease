@@ -33,7 +33,7 @@ class CategoriesListAdapter(
         with(holder.binding) {
             mealText.text = category.strCategory
             root.setOnClickListener {
-                listener.onItemClick(category.idCategory, category.strCategory, category.strCategoryDescription, category.strCategoryThumb)
+                listener.onItemClick(category.idCategory, category.strCategory)
             }
         }
     }
@@ -43,9 +43,7 @@ class CategoriesListAdapter(
     interface ListItemListener {
         fun onItemClick(
             categoryId: Int,
-            categoryName: String,
-            categoryDescription: String,
-            strCategoryThumb: String
+            categoryName: String
         )
     }
 }
