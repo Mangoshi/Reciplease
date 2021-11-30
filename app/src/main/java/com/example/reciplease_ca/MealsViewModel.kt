@@ -26,10 +26,15 @@ class MealsViewModel : ViewModel() {
         // so we make one:
         viewModelScope.launch {
             _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEALS_BY_CATEGORY.getMealsByCategory(categoryName).meals
+            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(categoryName).meals
             Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
-            _isLoading.value = false
+            if(fetchedMeals.isEmpty()){
+                // TO DO
+            }
+            else{
+                _meals.value = fetchedMeals
+                _isLoading.value = false
+            }
         }
     }
 

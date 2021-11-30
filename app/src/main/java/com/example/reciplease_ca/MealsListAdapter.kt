@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.reciplease_ca.databinding.ListItemBinding
 import com.example.reciplease_ca.models.Meal
 
@@ -29,8 +30,11 @@ class MealsListAdapter(
         val meal = mealsList[position]
         with(holder.binding) {
             itemText.text = meal.strMeal
+            Glide.with(root)
+                .load(meal.strMealThumb)
+                .into(itemImage)
             root.setOnClickListener {
-                listener.onItemClick(meal.idMeal, meal.strMeal, meal.strInstructions)
+                listener.onItemClick(meal.idMeal, meal.strMeal)
             }
         }
     }
@@ -40,8 +44,7 @@ class MealsListAdapter(
     interface ListItemListener {
         fun onItemClick(
             mealId: Int,
-            mealName: String,
-            mealInstructions: String
+            mealName: String
         )
     }
 }

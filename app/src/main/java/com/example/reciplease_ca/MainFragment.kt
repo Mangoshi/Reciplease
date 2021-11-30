@@ -33,7 +33,7 @@ class MainFragment : Fragment(),
 
         // Now we have references to all the child view objects within the layout
         // Now we have a code block where we can reference the object multiple times
-        with(binding.recyclerView) {
+        with(binding.categoriesRecyclerView) {
             // Height of each row will be the same regardless of contents
             setHasFixedSize(true)
             val divider = DividerItemDecoration(
@@ -53,8 +53,8 @@ class MainFragment : Fragment(),
         viewModel.categories.observe(viewLifecycleOwner, Observer {
             Log.i(TAG, it.toString())
             adapter = CategoriesListAdapter(it, this@MainFragment)
-            binding.recyclerView.adapter = adapter
-            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+            binding.categoriesRecyclerView.adapter = adapter
+            binding.categoriesRecyclerView.layoutManager = LinearLayoutManager(activity)
         })
 
         return binding.root

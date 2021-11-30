@@ -41,7 +41,7 @@ class MealsFragment : Fragment(),
         viewModel = ViewModelProvider(this).get(MealsViewModel::class.java)
         viewModel.getMealsByCategory(args.categoryName)
 
-        with(binding.recyclerView) {
+        with(binding.mealsRecyclerView) {
             setHasFixedSize(true)
             val divider = DividerItemDecoration(
                 context, LinearLayoutManager(context).orientation
@@ -51,13 +51,13 @@ class MealsFragment : Fragment(),
         viewModel.meals.observe(viewLifecycleOwner, Observer {
             Log.i(TAG, it.toString())
             adapter = MealsListAdapter(it, this@MealsFragment)
-            binding.recyclerView.adapter = adapter
-            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
+            binding.mealsRecyclerView.adapter = adapter
+            binding.mealsRecyclerView.layoutManager = LinearLayoutManager(activity)
         })
         return binding.root
     }
 
-    override fun onItemClick(mealId: Int, mealName: String, mealInstructions: String) {
+    override fun onItemClick(mealId: Int, mealName: String) {
         Log.i(TAG, "onItemClick: received meal id $mealId")
         val action = MealsFragmentDirections.actionMealsToEditor(mealId)
         findNavController().navigate(action)
