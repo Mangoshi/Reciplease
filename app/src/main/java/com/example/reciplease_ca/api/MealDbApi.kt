@@ -11,7 +11,7 @@ interface GETAllCategories {
 }
 
 interface GETMealsByCategory {
-    @GET("search.php")
+    @GET("filter.php")
     suspend fun getMealsByCategory(@Query("c") categoryName: String): MealResponse
 }
 

@@ -25,7 +25,7 @@ class MealsViewModel : ViewModel() {
         // so we make one:
         viewModelScope.launch {
             _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(categoryName).meals
+            val fetchedMeals = RetrofitInstance.GET_MEALS_BY_CATEGORY.getMealsByCategory(categoryName).meals
             Log.i(TAG, "(getMealsByCategory) Fetched meals: $fetchedMeals")
             if(fetchedMeals.isNullOrEmpty()){
                 Log.i(TAG, "(getMealsByCategory) Fetched meals is null or empty!")
