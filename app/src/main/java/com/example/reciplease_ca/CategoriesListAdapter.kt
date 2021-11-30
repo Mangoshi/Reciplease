@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reciplease_ca.databinding.ListItemBinding
 import com.example.reciplease_ca.models.Category
+import com.bumptech.glide.Glide
 
+// a reference to the Plant List data is passed in during intialisation
 class CategoriesListAdapter(
     private val categoriesList: List<Category>,
-    private val listener: ListItemListener
+    private val listener: ListItemListener,
 ) :
 
     RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
@@ -31,7 +33,10 @@ class CategoriesListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val category = categoriesList[position]
         with(holder.binding) {
-            mealText.text = category.strCategory
+            itemText.text = category.strCategory
+            Glide.with(root)
+                .load(category.strCategoryThumb)
+                .into(itemImage)
             root.setOnClickListener {
                 listener.onItemClick(category.idCategory, category.strCategory)
             }

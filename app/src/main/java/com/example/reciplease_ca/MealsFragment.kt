@@ -19,9 +19,9 @@ class MealsFragment : Fragment(),
     MealsListAdapter.ListItemListener {
 
     private lateinit var viewModel: MealsViewModel
+    private val args: MealsFragmentArgs by navArgs()
     private lateinit var binding: MealsFragmentBinding
     private lateinit var adapter: MealsListAdapter
-    private val args: MealsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -28,7 +28,7 @@ class MealsListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val meal = mealsList[position]
         with(holder.binding) {
-            mealText.text = meal.strMeal
+            itemText.text = meal.strMeal
             root.setOnClickListener {
                 listener.onItemClick(meal.idMeal, meal.strMeal, meal.strInstructions)
             }
