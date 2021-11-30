@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.reciplease_ca.api.RetrofitInstance
 import com.example.reciplease_ca.models.Category
-import com.example.reciplease_ca.models.Meal
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
@@ -27,9 +26,15 @@ class MainViewModel : ViewModel() {
             _isLoading.value = true
             val fetchedCategories =
                 RetrofitInstance.GET_ALL_CATEGORIES.getAllCategories().categories
-            Log.i(TAG, "Fetched categories: $fetchedCategories")
-            _categories.value = fetchedCategories
-            _isLoading.value = false
+            Log.i(TAG, "(getAllCategories) Fetched categories: $fetchedCategories")
+            if(fetchedCategories.isNullOrEmpty()){
+                Log.i(TAG, "(getAllCategories) Fetched categories is null or empty!")
+                _isLoading.value = false
+            }
+            else{
+                _categories.value = fetchedCategories
+                _isLoading.value = false
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ class MealsFragment : Fragment(),
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.ic_meal)
         }
-        setHasOptionsMenu(true)
+        setHasOptionsMenu(false)
 
         binding = MealsFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MealsViewModel::class.java)
@@ -58,8 +58,8 @@ class MealsFragment : Fragment(),
     }
 
     override fun onItemClick(mealId: Int, mealName: String) {
-        Log.i(TAG, "onItemClick: received meal id $mealId")
-        val action = MealsFragmentDirections.actionMealsToEditor(mealId)
+        Log.i(TAG, "(mealsFragment) onItemClick: received meal with id: $mealId and name: $mealName")
+        val action = MealsFragmentDirections.actionMealsToEditor(mealId, mealName)
         findNavController().navigate(action)
     }
 

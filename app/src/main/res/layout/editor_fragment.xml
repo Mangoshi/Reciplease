@@ -24,15 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
         -->
-        <TextView
-            android:id="@+id/mealDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:hint="@string/enter_note"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            tools:ignore="Autofill"
-            tools:text="Hello"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

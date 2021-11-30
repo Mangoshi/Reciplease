@@ -10,7 +10,6 @@ import com.example.reciplease_ca.models.Meal
 import kotlinx.coroutines.launch
 
 class MealsViewModel : ViewModel() {
-
     private val _meals: MutableLiveData<List<Meal>> = MutableLiveData()
     val meals: LiveData<List<Meal>>
         get() = _meals
@@ -27,36 +26,15 @@ class MealsViewModel : ViewModel() {
         viewModelScope.launch {
             _isLoading.value = true
             val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(categoryName).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            if(fetchedMeals.isEmpty()){
-                // TO DO
+            Log.i(TAG, "(getMealsByCategory) Fetched meals: $fetchedMeals")
+            if(fetchedMeals.isNullOrEmpty()){
+                Log.i(TAG, "(getMealsByCategory) Fetched meals is null or empty!")
+                _isLoading.value = false
             }
             else{
                 _meals.value = fetchedMeals
                 _isLoading.value = false
             }
-        }
-    }
-
-    fun getMealByName(searchQuery: String){
-        // a coroutine function can only be called from a coroutine,
-        // so we make one:
-        viewModelScope.launch {
-            _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(searchQuery).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
-            _isLoading.value = false
-        }
-    }
-
-    fun getMealById(mealId: Int){
-        viewModelScope.launch {
-            _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_ID.getMealById(mealId).meals
-            Log.i(TAG, "Fetched meals: $fetchedMeals")
-            _meals.value = fetchedMeals
-            _isLoading.value = false
         }
     }
 }

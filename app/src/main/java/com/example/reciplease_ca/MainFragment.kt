@@ -64,7 +64,7 @@ class MainFragment : Fragment(),
         categoryId: Int,
         categoryName: String
     ) {
-        Log.i(TAG, "onItemClick: received category ID $categoryId")
+        Log.i(TAG, "(mainFragment) onItemClick: received category ID $categoryId")
         val action = MainFragmentDirections.actionMainToMeals(categoryId, categoryName)
         findNavController().navigate(action)
     }

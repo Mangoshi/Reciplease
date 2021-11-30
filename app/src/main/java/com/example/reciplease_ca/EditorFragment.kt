@@ -18,6 +18,7 @@ class EditorFragment : Fragment() {
     private lateinit var viewModel: EditorViewModel
     private val args: EditorFragmentArgs by navArgs()
     private lateinit var binding: EditorFragmentBinding
+    private lateinit var adapter: MealsListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +31,17 @@ class EditorFragment : Fragment() {
             it.setHomeButtonEnabled(true)
             it.setDisplayShowHomeEnabled(true)
             it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeAsUpIndicator(R.drawable.ic_note)
+            it.setHomeAsUpIndicator(R.drawable.ic_check)
         }
-        setHasOptionsMenu(true)
+        setHasOptionsMenu(false)
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
         binding.mealName.setText(args.mealName)
-        binding.mealDescription.setText(args.mealDescription)
+
+//        viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
+//        viewModel.getMealByName(args.mealName)
+//        viewModel.getMealById(args.mealId)
+//        binding.mealName.text = args.mealName
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,
