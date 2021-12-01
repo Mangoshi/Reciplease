@@ -48,6 +48,21 @@
             app:argType="string"
             android:defaultValue="0"
             />
+        <argument
+            android:name="mealImage"
+            app:argType="string"
+            android:defaultValue="0"
+            />
+        <argument
+            android:name="mealCategory"
+            app:argType="string"
+            android:defaultValue="0"
+            />
+        <argument
+            android:name="mealInstructions"
+            app:argType="string"
+            android:defaultValue="0"
+            />
         <action
             android:id="@+id/action_editor_to_main"
             app:destination="@id/mainFragment"/>

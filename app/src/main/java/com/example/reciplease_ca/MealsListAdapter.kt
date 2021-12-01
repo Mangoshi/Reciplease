@@ -34,7 +34,13 @@ class MealsListAdapter(
                 .load(meal.strMealThumb)
                 .into(itemImage)
             root.setOnClickListener {
-                listener.onItemClick(meal.idMeal, meal.strMeal)
+                listener.onItemClick(
+                    meal.idMeal,
+                    meal.strMeal,
+                    meal.strMealThumb,
+                    meal.strCategory,
+                    meal.strInstructions
+                )
             }
         }
     }
@@ -44,7 +50,10 @@ class MealsListAdapter(
     interface ListItemListener {
         fun onItemClick(
             mealId: Int,
-            mealName: String
+            mealName: String,
+            mealImage: String,
+            mealCategory: String,
+            mealInstructions: String
         )
     }
 }

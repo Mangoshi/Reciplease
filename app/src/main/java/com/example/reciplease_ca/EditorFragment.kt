@@ -31,13 +31,12 @@ class EditorFragment : Fragment() {
             it.setHomeButtonEnabled(true)
             it.setDisplayShowHomeEnabled(true)
             it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeAsUpIndicator(R.drawable.ic_check)
+            it.setHomeAsUpIndicator(R.drawable.ic_meal)
         }
         setHasOptionsMenu(false)
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
         binding.mealName.setText(args.mealName)
-
 //        viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
 //        viewModel.getMealByName(args.mealName)
 //        viewModel.getMealById(args.mealId)

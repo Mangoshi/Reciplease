@@ -57,9 +57,21 @@ class MealsFragment : Fragment(),
         return binding.root
     }
 
-    override fun onItemClick(mealId: Int, mealName: String) {
+    override fun onItemClick(
+        mealId: Int,
+        mealName: String,
+        mealImage: String,
+        mealCategory: String,
+        mealInstructions: String
+    ) {
         Log.i(TAG, "(mealsFragment) onItemClick: received meal with id: $mealId and name: $mealName")
-        val action = MealsFragmentDirections.actionMealsToEditor(mealId, mealName)
+        val action = MealsFragmentDirections.actionMealsToEditor(
+            mealId,
+            mealName,
+            mealImage,
+            mealCategory,
+            mealInstructions
+        )
         findNavController().navigate(action)
     }
 
