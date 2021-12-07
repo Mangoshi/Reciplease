@@ -1,24 +1,22 @@
 package com.example.reciplease_ca
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.reciplease_ca.databinding.EditorFragmentBinding
 
 class EditorFragment : Fragment() {
-
     private lateinit var viewModel: EditorViewModel
-    private val args: EditorFragmentArgs by navArgs()
     private lateinit var binding: EditorFragmentBinding
-    private lateinit var adapter: MealsListAdapter
+    private val args: EditorFragmentArgs by this.navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +34,10 @@ class EditorFragment : Fragment() {
         setHasOptionsMenu(false)
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
-        binding.mealName.setText(args.mealName)
-//        viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
-//        viewModel.getMealByName(args.mealName)
-//        viewModel.getMealById(args.mealId)
-//        binding.mealName.text = args.mealName
+        viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
+        viewModel.getMealByName(args.mealName)
+
+//        binding.mealName.text =
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,

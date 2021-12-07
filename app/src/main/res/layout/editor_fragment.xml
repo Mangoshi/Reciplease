@@ -17,6 +17,9 @@
             tools:layout_editor_absoluteY="125dp"
             tools:srcCompat="@tools:sample/avatars"
             android:contentDescription="@string/meal_image" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
         <TextView
             android:id="@+id/mealCategory"
             android:layout_width="match_parent"

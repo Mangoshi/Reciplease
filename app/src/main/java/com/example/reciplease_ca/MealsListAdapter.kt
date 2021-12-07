@@ -36,10 +36,7 @@ class MealsListAdapter(
             root.setOnClickListener {
                 listener.onItemClick(
                     meal.idMeal,
-                    meal.strMeal,
-                    meal.strMealThumb,
-                    meal.strCategory,
-                    meal.strInstructions
+                    meal.strMeal
                 )
             }
         }
@@ -50,10 +47,7 @@ class MealsListAdapter(
     interface ListItemListener {
         fun onItemClick(
             mealId: Int,
-            mealName: String,
-            mealImage: String,
-            mealCategory: String,
-            mealInstructions: String
+            mealName: String
         )
     }
 }

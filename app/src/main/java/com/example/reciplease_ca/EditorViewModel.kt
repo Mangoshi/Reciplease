@@ -25,14 +25,14 @@ class EditorViewModel : ViewModel() {
         // so we make one:
         viewModelScope.launch {
             _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(mealName).meals
-            Log.i(TAG, "(getMealByName) Fetched meals: $fetchedMeals")
-            if(fetchedMeals.isNullOrEmpty()){
-                Log.i(TAG, "(getMealByName) Fetched meals is null or empty!")
+            val fetchedMeal = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(mealName).meals
+            Log.i(TAG, "(getMealByName) Fetched meal: $fetchedMeal")
+            if(fetchedMeal.isNullOrEmpty()){
+                Log.i(TAG, "(getMealByName) Fetched meal is null or empty!")
                 _isLoading.value = false
             }
             else{
-                _meals.value = fetchedMeals
+                _meals.value = fetchedMeal
                 _isLoading.value = false
             }
         }
@@ -41,14 +41,14 @@ class EditorViewModel : ViewModel() {
     fun getMealById(mealId: Int){
         viewModelScope.launch {
             _isLoading.value = true
-            val fetchedMeals = RetrofitInstance.GET_MEAL_BY_ID.getMealById(mealId).meals
-            Log.i(TAG, "(getMealById) Fetched meals: $fetchedMeals")
-            if(fetchedMeals.isNullOrEmpty()){
-                Log.i(TAG, "(getMealById) Fetched meals is null or empty!")
+            val fetchedMeal = RetrofitInstance.GET_MEAL_BY_ID.getMealById(mealId).meals
+            Log.i(TAG, "(getMealById) Fetched meal: $fetchedMeal")
+            if(fetchedMeal.isNullOrEmpty()){
+                Log.i(TAG, "(getMealById) Fetched meal is null or empty!")
                 _isLoading.value = false
             }
             else{
-                _meals.value = fetchedMeals
+                _meals.value = fetchedMeal
                 _isLoading.value = false
             }
         }

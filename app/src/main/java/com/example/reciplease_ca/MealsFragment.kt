@@ -19,9 +19,9 @@ class MealsFragment : Fragment(),
     MealsListAdapter.ListItemListener {
 
     private lateinit var viewModel: MealsViewModel
-    private val args: MealsFragmentArgs by navArgs()
     private lateinit var binding: MealsFragmentBinding
     private lateinit var adapter: MealsListAdapter
+    private val args: MealsFragmentArgs by this.navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,18 +59,12 @@ class MealsFragment : Fragment(),
 
     override fun onItemClick(
         mealId: Int,
-        mealName: String,
-        mealImage: String,
-        mealCategory: String,
-        mealInstructions: String
+        mealName: String
     ) {
         Log.i(TAG, "(mealsFragment) onItemClick: received meal with id: $mealId and name: $mealName")
         val action = MealsFragmentDirections.actionMealsToEditor(
             mealId,
-            mealName,
-            mealImage,
-            mealCategory,
-            mealInstructions
+            mealName
         )
         findNavController().navigate(action)
     }
