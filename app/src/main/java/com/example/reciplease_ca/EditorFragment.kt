@@ -65,9 +65,90 @@ class EditorFragment : Fragment() {
         }
 
         // binding meal details to the TextViews on editor fragment layout
-        binding.mealName.text = meal.strMeal
         binding.mealCategory.text = meal.strCategory
+        binding.mealName.text = meal.strMeal
+        binding.mealArea.text = meal.strArea
         binding.mealInstructions.text = meal.strInstructions
+        // ingredient 1
+        if(meal.strIngredient1 != "") {
+            binding.mealIngredient1.text = meal.strIngredient1
+        } else { binding.mealIngredient1.text = " " }
+        // ingredient 2
+        if(meal.strIngredient2 != "") {
+            binding.mealIngredient2.text = meal.strIngredient2
+        } else { binding.mealIngredient2.text = " " }
+        // ingredient 3
+        if(meal.strIngredient3 != "") {
+            binding.mealIngredient3.text = meal.strIngredient3
+        } else { binding.mealIngredient3.text = " " }
+        // ingredient 4
+        if(meal.strIngredient4 != "") {
+            binding.mealIngredient4.text = meal.strIngredient4
+        } else { binding.mealIngredient4.text = " " }
+        // ingredient 5
+        if(meal.strIngredient5 != "") {
+            binding.mealIngredient5.text = meal.strIngredient5
+        } else { binding.mealIngredient5.text = " " }
+        // ingredient 6
+        if(meal.strIngredient6 != "") {
+            binding.mealIngredient6.text = meal.strIngredient6
+        } else { binding.mealIngredient6.text = " " }
+        // ingredient 7
+        if(meal.strIngredient7 != "") {
+            binding.mealIngredient7.text = meal.strIngredient7
+        } else { binding.mealIngredient7.text = " " }
+        // ingredient 8
+        if(meal.strIngredient8 != "") {
+            binding.mealIngredient8.text = meal.strIngredient8
+        } else { binding.mealIngredient8.text = " " }
+        // ingredient 9
+        if(meal.strIngredient9 != "") {
+            binding.mealIngredient9.text = meal.strIngredient9
+        } else { binding.mealIngredient9.text = " " }
+        // ingredient 10
+        if(meal.strIngredient10 != "") {
+            binding.mealIngredient10.text = meal.strIngredient10
+        } else { binding.mealIngredient10.text = " " }
+        // ingredient 11
+        if(meal.strIngredient11 != "") {
+            binding.mealIngredient11.text = meal.strIngredient11
+        } else { binding.mealIngredient11.text = " " }
+        // ingredient 12
+        if(meal.strIngredient12 != "") {
+            binding.mealIngredient12.text = meal.strIngredient12
+        } else { binding.mealIngredient12.text = " " }
+        // ingredient 13
+        if(meal.strIngredient13 != "") {
+            binding.mealIngredient13.text = meal.strIngredient13
+        } else { binding.mealIngredient13.text = " " }
+        // ingredient 14
+        if(meal.strIngredient14 != "") {
+            binding.mealIngredient14.text = meal.strIngredient14
+        } else { binding.mealIngredient14.text = " " }
+        // ingredient 15
+        if(meal.strIngredient15 != "") {
+            binding.mealIngredient15.text = meal.strIngredient15
+        } else { binding.mealIngredient15.text = " " }
+        // ingredient 16
+        if(meal.strIngredient16 != "") {
+            binding.mealIngredient16.text = meal.strIngredient16
+        } else { binding.mealIngredient16.text = " " }
+        // ingredient 17
+        if(meal.strIngredient17 != "") {
+            binding.mealIngredient17.text = meal.strIngredient17
+        } else { binding.mealIngredient17.text = " " }
+        // ingredient 18
+        if(meal.strIngredient18 != "") {
+            binding.mealIngredient18.text = meal.strIngredient18
+        } else { binding.mealIngredient18.text = " " }
+        // ingredient 19
+        if(meal.strIngredient19 != "") {
+            binding.mealIngredient19.text = meal.strIngredient19
+        } else { binding.mealIngredient19.text = " " }
+        // ingredient 20
+        if(meal.strIngredient20 != "") {
+            binding.mealIngredient20.text = meal.strIngredient20
+        } else { binding.mealIngredient20.text = " " }
 
         // using Glide to set the mealImage
         Glide.with(binding.root)

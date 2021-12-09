@@ -7,4 +7,6 @@
     <string name="Instructions">Meal Instructions</string>
     <string name="Category">Meal Category</string>
     <string name="Name">Meal Name</string>
+    <string name="Area">Meal Cuisine</string>
+    <string name="Ingredients">Meal Ingredients</string>
 </resources>

@@ -41,7 +41,6 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
-
         <TextView
             android:id="@+id/mealNameHeading"
             android:layout_width="match_parent"
@@ -60,6 +59,27 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:ignore="Autofill"
             tools:text="Meal Name"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <TextView
+            android:id="@+id/mealAreaHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/Area"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:ignore="Autofill"
+            tools:text="Meal Area Heading" />
+        <TextView
+            android:id="@+id/mealArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Area"/>
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
@@ -84,7 +104,195 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
-
+        <TextView
+            android:id="@+id/mealIngredientsHeading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/Ingredients"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredients Heading" />
+        <TextView
+            android:id="@+id/mealIngredient1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
+        <TextView
+            android:id="@+id/mealIngredient20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_note"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Meal Ingredient"/>
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
