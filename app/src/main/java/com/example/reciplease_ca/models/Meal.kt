@@ -3,7 +3,9 @@ package com.example.reciplease_ca.models
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
+// Using Parcelize so I can make passing the data more easy to manage
 @Parcelize
+// A model of a Meal as they're seen on themealdb
 data class Meal (
     // values used for both MealsList and Editor Fragments
     val idMeal: Int,

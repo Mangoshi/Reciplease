@@ -3,10 +3,11 @@ package com.example.reciplease_ca.data
 import android.content.Context
 import androidx.room.*
 
+// App's RoomDatabase for defining the database setup
 @Database(entities = [MealEntity::class], version = 1, exportSchema = false)
-@TypeConverters(DateConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
+    // The meal Data Access Object defines the database interactions
     abstract fun mealDao(): MealDao?
 
     companion object {

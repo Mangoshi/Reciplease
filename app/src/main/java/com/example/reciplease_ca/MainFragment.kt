@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -47,7 +46,9 @@ class MainFragment : Fragment(),
 //            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
 //        })
 
-        viewModel.categories.observe(viewLifecycleOwner, Observer {
+        // Defining the categories observer
+        viewModel.categories.observe(viewLifecycleOwner, {
+            // Log the List<Category>
             Log.i(TAG, it.toString())
             adapter = CategoriesListAdapter(it, this@MainFragment)
             binding.categoriesRecyclerView.adapter = adapter
@@ -61,6 +62,7 @@ class MainFragment : Fragment(),
         categoryId: Int,
         categoryName: String
     ) {
+        // Logging clicked category for debugging
         Log.i(TAG, "(mainFragment) onItemClick: received category ID $categoryId")
         val action = MainFragmentDirections.actionMainToMeals(categoryId, categoryName)
         findNavController().navigate(action)

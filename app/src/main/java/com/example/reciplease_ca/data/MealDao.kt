@@ -19,7 +19,7 @@ interface MealDao {
     fun insertAll(meal: List<MealEntity>)
 
     // Can use this to observe database table and use reactive programming so I can update the UI automatically as it changes
-    @Query("SELECT * FROM meals ORDER BY date ASC")
+    @Query("SELECT * FROM meals ORDER BY text ASC")
     fun getAll(): LiveData<List<MealEntity>>
 
     // Single select using ID parameter

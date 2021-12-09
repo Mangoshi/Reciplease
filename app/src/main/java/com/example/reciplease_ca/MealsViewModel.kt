@@ -24,6 +24,8 @@ class MealsViewModel : ViewModel() {
     val selectedMeal: MutableLiveData<List<Meal>>
         get() = _selectedMeal
 
+    // getMealsByCategory to get all meals under a certain category.
+    // to be displayed in MealsFragment
     fun getMealsByCategory(categoryName: String){
         // a coroutine function can only be called from a coroutine,
         // so we make one:
@@ -42,6 +44,8 @@ class MealsViewModel : ViewModel() {
         }
     }
 
+    // getMealByName to get the details of a named meal
+    // to be displayed in EditorFragment
     fun getMealByName(mealName: String){
         viewModelScope.launch {
             _isLoading.value = true

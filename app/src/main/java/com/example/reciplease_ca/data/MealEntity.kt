@@ -10,11 +10,13 @@ import java.util.*
 // "data" in "data class" means there will be some properties used by this class
 @Entity(tableName = "meals")
 data class MealEntity(
+    // Auto generate the primary key
     @PrimaryKey(autoGenerate = true)
+    // Class variables
     var id: Int,
-    var date: Date,
     var text: String
 ) {
-    constructor() : this(NEW_MEAL_ID, Date(), "")
-    constructor(date: Date, text: String) : this(NEW_MEAL_ID, date, text)
+    // Constructors
+    constructor() : this(NEW_MEAL_ID, "")
+    constructor(text: String) : this(NEW_MEAL_ID, text)
 }

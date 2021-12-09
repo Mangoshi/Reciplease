@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.reciplease_ca.databinding.ListItemBinding
 import com.example.reciplease_ca.models.Meal
 
+// Reference to the Meals List is passed in during initialisation
 class MealsListAdapter(
     private val mealsList: List<Meal>,
     private val listener: ListItemListener

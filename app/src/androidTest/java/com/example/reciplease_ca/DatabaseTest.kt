@@ -15,6 +15,8 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 import org.junit.Before
 
+// Database functionality test file
+
 @RunWith(AndroidJUnit4::class)
 class DatabaseTest {
 

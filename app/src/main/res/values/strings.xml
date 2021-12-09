@@ -4,4 +4,7 @@
     <string name="floating_action_button">Floating Action Button</string>
     <string name="textview">TextView</string>
     <string name="meal_image">Meal Image</string>
+    <string name="Instructions">Meal Instructions</string>
+    <string name="Category">Meal Category</string>
+    <string name="Name">Meal Name</string>
 </resources>

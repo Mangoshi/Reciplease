@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +38,7 @@ class MealsFragment : Fragment(),
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeAsUpIndicator(R.drawable.ic_meal)
         }
-        setHasOptionsMenu(false)
+        setHasOptionsMenu(true)
 
         binding = MealsFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MealsViewModel::class.java)
@@ -57,6 +58,19 @@ class MealsFragment : Fragment(),
             binding.mealsRecyclerView.layoutManager = LinearLayoutManager(activity)
         })
         return binding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> saveAndReturn()
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun saveAndReturn(): Boolean {
+        // Go back to the main fragment
+        findNavController().navigateUp()
+        return true
     }
 
     override fun onItemClick(

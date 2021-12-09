@@ -2,22 +2,30 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.reciplease_ca">
 
+    <!--  Permission needed to allow the app to access the Internet  -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--  App settings  -->
+    <!--  Allow user to include app in backup & restore  -->
+    <!--  App label defines name that appears under the icon on the launcher  -->
+    <!--  App icon defines the icon shown on the launcher  -->
+    <!--  Round icon defines the icon used on older versions of Android  -->
+    <!--  supportsRTL defines if there's right-to-left layout support  -->
+    <!--  Theme defines the overall theme used across the app -->
     <application
         android:fullBackupOnly="true"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/Theme.RecipleaseCA">
+        <!--    Activity defines first activity to run on app start    -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
