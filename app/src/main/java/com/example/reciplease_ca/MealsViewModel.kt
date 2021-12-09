@@ -20,6 +20,10 @@ class MealsViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private val _selectedMeal: MutableLiveData<List<Meal>> = MutableLiveData()
+    val selectedMeal: MutableLiveData<List<Meal>>
+        get() = _selectedMeal
+
     fun getMealsByCategory(categoryName: String){
         // a coroutine function can only be called from a coroutine,
         // so we make one:
@@ -35,6 +39,16 @@ class MealsViewModel : ViewModel() {
                 _meals.value = fetchedMeals
                 _isLoading.value = false
             }
+        }
+    }
+
+    fun getMealByName(mealName: String){
+        viewModelScope.launch {
+            _isLoading.value = true
+            val fetchedMeal = RetrofitInstance.GET_MEAL_BY_NAME.getMealByName(mealName).meals
+            Log.i(TAG, "(getMealByName) Fetched meal: $fetchedMeal")
+            _selectedMeal.value = fetchedMeal
+            _isLoading.value = false
         }
     }
 }

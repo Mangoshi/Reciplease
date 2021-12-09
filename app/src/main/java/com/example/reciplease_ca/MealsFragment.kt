@@ -14,6 +14,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reciplease_ca.databinding.MealsFragmentBinding
+import com.example.reciplease_ca.models.Meal
 
 class MealsFragment : Fragment(),
     MealsListAdapter.ListItemListener {
@@ -21,6 +22,7 @@ class MealsFragment : Fragment(),
     private lateinit var viewModel: MealsViewModel
     private lateinit var binding: MealsFragmentBinding
     private lateinit var adapter: MealsListAdapter
+    private var selectedMeal: Meal? = null
     private val args: MealsFragmentArgs by this.navArgs()
 
     override fun onCreateView(
@@ -62,11 +64,23 @@ class MealsFragment : Fragment(),
         mealName: String
     ) {
         Log.i(TAG, "(mealsFragment) onItemClick: received meal with id: $mealId and name: $mealName")
-        val action = MealsFragmentDirections.actionMealsToEditor(
-            mealId,
-            mealName
-        )
-        findNavController().navigate(action)
+        // On click run getMealByName to make the third API call to retrieve meals data
+        viewModel.getMealByName(mealName)
+
+        // Observer for selected meal so the changes can be monitored
+        viewModel.selectedMeal.observe(viewLifecycleOwner, Observer{
+            with(it){
+                selectedMeal = it.first()
+            }
+        })
+
+        // Navigate to EditorFragment, passing selectedMeal as an argument
+        val direction = selectedMeal?.let { MealsFragmentDirections.actionMealsToEditor(selectedMeal!!) }
+        // Error handling
+        if (direction != null) {
+            findNavController().navigate(direction)
+            selectedMeal = null
+        }
     }
 
 }

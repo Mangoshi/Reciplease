@@ -26,10 +26,7 @@ class MainFragment : Fragment(),
     ): View? {
         binding = MainFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
         viewModel.getAllCategories()
-//        viewModel.getMealById(52940)
-//        viewModel.getMealByName("Arrabiata")
 
         // Now we have references to all the child view objects within the layout
         // Now we have a code block where we can reference the object multiple times

@@ -12,16 +12,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.reciplease_ca.databinding.EditorFragmentBinding
+import com.example.reciplease_ca.models.Meal
 
 class EditorFragment : Fragment() {
     private lateinit var viewModel: EditorViewModel
     private lateinit var binding: EditorFragmentBinding
+    private lateinit var meal: Meal
     private val args: EditorFragmentArgs by this.navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
 
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
@@ -35,9 +38,20 @@ class EditorFragment : Fragment() {
 
         binding = EditorFragmentBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
-        viewModel.getMealByName(args.mealName)
+//        viewModel.getMealByName(args.mealName)
+//
+//        binding.mealName.text = args.mealName
+//        binding.mealCategory.text = args.mealCategory
+//        binding.mealInstructions.text = args.mealInstructions
 
-//        binding.mealName.text =
+        val bundle = this.arguments
+        if (bundle != null) {
+            meal = bundle.getParcelable<Meal>("meal")!!
+        }
+
+        binding.mealName.text = meal.strMeal
+        binding.mealCategory.text = meal.strCategory
+        binding.mealInstructions.text = meal.strInstructions
 
         requireActivity().onBackPressedDispatcher.addCallback(
             viewLifecycleOwner,

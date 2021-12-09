@@ -1,5 +1,9 @@
 package com.example.reciplease_ca.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Meal (
     // values used for both MealsList and Editor Fragments
     val idMeal: Int,
@@ -53,4 +57,4 @@ data class Meal (
     val strMeasure19: String,
     val strMeasure20: String,
     val strSource: String
-)
+) : Parcelable
