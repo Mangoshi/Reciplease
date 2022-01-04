@@ -1,16 +1,20 @@
 package com.example.reciplease_ca
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.reciplease_ca.data.MealEntity
 import com.example.reciplease_ca.databinding.EditorFragmentBinding
 import com.example.reciplease_ca.models.Meal
 
@@ -60,14 +64,18 @@ class EditorFragment : Fragment() {
 
         val bundle = this.arguments
         if (bundle != null) {
-            // Un-bundles the the parceled meal from the nav arguments
+            // Un-bundles the parceled meal from the nav arguments
             meal = bundle.getParcelable("meal")!!
         }
 
-        // binding meal details to the TextViews on editor fragment layout
+        // Binding meal details to the TextViews on editor fragment layout
+        // Meal category
         binding.mealCategory.text = meal.strCategory
+        // Meal name
         binding.mealName.text = meal.strMeal
+        // Meal area
         binding.mealArea.text = meal.strArea
+        // Meal instructons
         binding.mealInstructions.text = meal.strInstructions
         // ingredient 1
         if(meal.strIngredient1 != "") {
@@ -165,13 +173,85 @@ class EditorFragment : Fragment() {
             }
         )
 
+        // Run getHeart() from the viewModel, passing in the current meal ID
+        // This is to find out whether or not the meal has been hearted or not
+        viewModel.getHeart(meal.idMeal)
+
+        // Observing the state of currentHeart
+        viewModel.currentHeart.observe(viewLifecycleOwner, {
+            // If the meal hasn't been hearted, set the button text to a black heart
+            if (viewModel.currentHeart.value == null) {
+                binding.heartButton.text = getString(R.string.heartBlack)
+                // binding.mealHeart.text = getString(R.string.addHeart)
+            }
+            // Else if the meal hasn't been hearted, set the button text to a white heart
+            else {
+                binding.heartButton.text = getString(R.string.heartWhite)
+                // binding.mealHeart.text = getString(R.string.removeHeart)
+            }
+        })
+
+        // Click-listener for the heartButton. On click, run heartMeal()
+        binding.heartButton.setOnClickListener {
+            heartMeal()
+        }
+
         // Return the root of the binding
         return binding.root
     }
 
-    // when options menu is selected (home), saveAndReturn
+    // Function to be run when heart button is clicked
+    private fun heartMeal() {
+        // Log to logcat
+        Log.i("Heart", "Clicked heart!")
+        // If the meal hasn't been hearted yet
+        if(viewModel.currentHeart.value == null) {
+            // Log to logcat
+            Log.i("Heart", "Not yet hearted! Adding heart..")
+            // Execute saveHeart() from viewModel, passing in the constructor variables
+            viewModel.saveHeart(
+                MealEntity(meal.idMeal, meal.strMeal)
+            )
+            // Show the add heart dialog box
+            addHeartDialog()
+            // Execute getHeart() to update
+            viewModel.getHeart(meal.idMeal)
+
+        // Else, if the meal has been hearted already
+        } else {
+            // Log to logcat
+            Log.i("Heart", "Already hearted! Removing heart..")
+            // Execute removeHeart() from viewModel, passing in the meal ID
+            viewModel.removeHeart(meal.idMeal)
+            // Show the remove heart dialog box
+            removeHeartDialog()
+            // Execute getHeart() to update
+            viewModel.getHeart(meal.idMeal)
+        }
+    }
+
+    private fun addHeartDialog() {
+        // Initialising dialog box builder using the AlertDialog class
+        val heartDialog = AlertDialog.Builder(requireContext())
+        // Setting dialog box message
+        heartDialog.setMessage("Heart added!")
+        // Setting the close-button text, not using the listener functionality
+        heartDialog.setPositiveButton("Nice!") { _: DialogInterface, _: Int -> }
+        // Display dialog box
+        heartDialog.show()
+    }
+
+    private fun removeHeartDialog() {
+        val heartDialog = AlertDialog.Builder(requireContext())
+        heartDialog.setMessage("Heart removed!")
+        heartDialog.setPositiveButton("Nice!") { _: DialogInterface, _: Int -> }
+        heartDialog.show()
+    }
+
+    // When back button is pressed
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
+            // Return home using saveAndReturn()
             android.R.id.home -> saveAndReturn()
             else -> super.onOptionsItemSelected(item)
         }
@@ -189,5 +269,4 @@ class EditorFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(EditorViewModel::class.java)
     }
-
 }

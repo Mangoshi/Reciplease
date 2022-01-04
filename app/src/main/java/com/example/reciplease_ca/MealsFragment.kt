@@ -1,15 +1,14 @@
 package com.example.reciplease_ca
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -29,7 +28,7 @@ class MealsFragment : Fragment(),
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
         (activity as AppCompatActivity).supportActionBar?.let {
@@ -51,7 +50,7 @@ class MealsFragment : Fragment(),
             )
             addItemDecoration(divider)
         }
-        viewModel.meals.observe(viewLifecycleOwner, Observer {
+        viewModel.meals.observe(viewLifecycleOwner, {
             Log.i(TAG, it.toString())
             adapter = MealsListAdapter(it, this@MealsFragment)
             binding.mealsRecyclerView.adapter = adapter
@@ -82,10 +81,8 @@ class MealsFragment : Fragment(),
         viewModel.getMealByName(mealName)
 
         // Observer for selected meal so the changes can be monitored
-        viewModel.selectedMeal.observe(viewLifecycleOwner, Observer{
-            with(it){
-                selectedMeal = it.first()
-            }
+        viewModel.selectedMeal.observe(viewLifecycleOwner, {
+            selectedMeal = it.first()
         })
 
         // Navigate to EditorFragment, passing selectedMeal as an argument

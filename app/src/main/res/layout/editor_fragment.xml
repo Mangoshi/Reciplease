@@ -20,6 +20,26 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
+        <!--
+        <TextView
+            android:id="@+id/mealHeart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/addHeart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:ignore="Autofill"
+            tools:text="Add Heart" />
+        -->
+        <Button
+            android:id="@+id/heartButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/heartBlack"
+            android:textSize="24sp"
+            />
         <TextView
             android:id="@+id/mealCategoryHeading"
             android:layout_width="match_parent"

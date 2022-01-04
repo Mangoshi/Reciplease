@@ -6,6 +6,8 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
+// Data Access Object: used when modifying / reading from our SQLite DB
+// This DAO is being used to store meals the user "hearts"
 @Dao
 interface MealDao {
 
@@ -14,19 +16,21 @@ interface MealDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMeal(meal: MealEntity)
 
-    // Inserting a bunch of meals, but if they already exist in the database, throw away the new ones
+    // Insert a bunch of meals, but if they already exist in the database, skip the new ones
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(meal: List<MealEntity>)
 
-    // Can use this to observe database table and use reactive programming so I can update the UI automatically as it changes
+    // Select all meals from DB
+    // Could use this to view heart list
     @Query("SELECT * FROM meals ORDER BY text ASC")
     fun getAll(): LiveData<List<MealEntity>>
 
-    // Single select using ID parameter
+    // Select a meal (by ID)
     @Query("SELECT * FROM meals WHERE id = :id")
     fun getMealById(id: Int): MealEntity?
 
-    @Query("SELECT COUNT(*) FROM meals")
-    fun getCount(): Int
+    // Delete a meal (by ID)
+    @Query("DELETE FROM meals WHERE id = :id")
+    fun removeMeal(id: Int)
 
 }

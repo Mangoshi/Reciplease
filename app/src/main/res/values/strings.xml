@@ -9,4 +9,8 @@
     <string name="Name">Meal Name</string>
     <string name="Area">Meal Cuisine</string>
     <string name="Ingredients">Meal Ingredients</string>
+    <string name="heartBlack">🖤 Reciplease!</string>
+    <string name="heartWhite">🤍 Remove</string>
+    <string name="removeHeart">Remove Heart</string>
+    <string name="addHeart">Add Heart</string>
 </resources>
