@@ -1,6 +1,5 @@
 package com.example.reciplease_ca
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -209,43 +207,18 @@ class EditorFragment : Fragment() {
             // Log to logcat
             Log.i("Heart", "Not yet hearted! Adding heart..")
             // Execute saveHeart() from viewModel, passing in the constructor variables
-            viewModel.saveHeart(
-                MealEntity(meal.idMeal, meal.strMeal)
-            )
-            // Show the add heart dialog box
-            addHeartDialog()
+            viewModel.saveHeart(MealEntity(meal.idMeal, meal.strMeal))
             // Execute getHeart() to update
             viewModel.getHeart(meal.idMeal)
-
         // Else, if the meal has been hearted already
         } else {
             // Log to logcat
             Log.i("Heart", "Already hearted! Removing heart..")
             // Execute removeHeart() from viewModel, passing in the meal ID
             viewModel.removeHeart(meal.idMeal)
-            // Show the remove heart dialog box
-            removeHeartDialog()
             // Execute getHeart() to update
             viewModel.getHeart(meal.idMeal)
         }
-    }
-
-    private fun addHeartDialog() {
-        // Initialising dialog box builder using the AlertDialog class
-        val heartDialog = AlertDialog.Builder(requireContext())
-        // Setting dialog box message
-        heartDialog.setMessage("Heart added!")
-        // Setting the close-button text, not using the listener functionality
-        heartDialog.setPositiveButton("Nice!") { _: DialogInterface, _: Int -> }
-        // Display dialog box
-        heartDialog.show()
-    }
-
-    private fun removeHeartDialog() {
-        val heartDialog = AlertDialog.Builder(requireContext())
-        heartDialog.setMessage("Heart removed!")
-        heartDialog.setPositiveButton("Nice!") { _: DialogInterface, _: Int -> }
-        heartDialog.show()
     }
 
     // When back button is pressed
